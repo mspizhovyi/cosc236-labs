@@ -16,5 +16,3 @@ Throughout the labs, we focus on:
 - Identifying system requirements and translating them into object models
 - Designing classes, relationships, and behaviors using UML diagrams
 - Implementing and testing Java applications that reflect good OO design principles
-
-## 📂 Repository Structure
