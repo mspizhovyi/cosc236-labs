@@ -1,0 +1,66 @@
+# -----------------------
+# Java / Maven project
+# -----------------------
+
+# Maven target directory (compiled classes, JARs, etc.)
+target/
+
+# Build output from IDEs
+bin/
+out/
+
+# -----------------------
+# IDE / Editor settings
+# -----------------------
+
+# VS Code
+.vscode/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# -----------------------
+# OS-specific junk files
+# -----------------------
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux
+*~
+
+# -----------------------
+# Logs / temp files
+# -----------------------
+
+*.log
+*.tmp
+
+# -----------------------
+# Java-specific generated files
+# -----------------------
+
+# Compiled class files
+*.class
+
+# Package archives
+*.jar
+*.war
+*.ear
+
+# -----------------------
+# Misc
+# -----------------------
+
+# Environment / secret configs (if added later)
+.env
