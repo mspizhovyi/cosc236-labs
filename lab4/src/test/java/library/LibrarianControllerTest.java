@@ -42,7 +42,7 @@ public class LibrarianControllerTest {
     @Test
     void shouldBorrowBookWhenAvailable() {
         controller.collectBook("The Pragmatic Programmer", "Andy Hunt");
-        // Member logic not implemented yet, but we can test book-only behavior
+        // Member logic not implemented yet, but we can test book-only behavior 🤔
         String result = controller.borrowBook("The Pragmatic Programmer", "Andy Hunt", "DummyMember");
         assertTrue(result.contains("Book borrowed successfully"));
     }
