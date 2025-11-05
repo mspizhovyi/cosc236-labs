@@ -69,9 +69,6 @@ public class LibrarianControllerTest {
         assertTrue(printed.contains("Another Book"));
     }
 
-    // -------------------------------------------------------------
-    // 🚧 FUTURE TESTS (commented out until Member logic is added)
-    // -------------------------------------------------------------
     @Test
     void shouldBorrowBookWithRealMemberOnceImplemented() {
         controller.collectBook("Clean Coder", "Robert Martin");
