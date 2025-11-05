@@ -16,23 +16,26 @@ public class Member {
     }
 
     public void borrowBook(Book book) {
-        // TODO (Jun): add this book to borrowedBooks list
+        if(book == null) 
+            return System.out.println(book.getName() + " does not exist in the library.");
+        if(!borrowedBooks.contains(book))
+            borrowedBooks.add(book);
 
     }
 
     public void returnBook(Book book) {
-        // TODO (Jun): remove this book from borrowedBooks list
-       
+        if(book == null)
+            return System.out.println(book.getName() + " does not exist in the library.");
+        if(borrowedBooks.contains(book))
+            borrowedBooks.remove(book)
     }
 
     public List<Book> getBorrowedBooks() {
-        // TODO (Jun): return a copy of borrowedBooks
-        return new ArrayList<>();
+        return new ArrayList<>(borrowedBooks);
     }
 
     @Override
     public String toString() {
-        // TODO (Jun): display member name and number of borrowed books
-       return "";
+       return String.format("Member{name='%s', borrowed=%d}", name, borrowedBooks.size());
     }
 }

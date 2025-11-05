@@ -34,19 +34,19 @@ public class LibrarianController {
         System.out.println(info);
     }
 
-    // -------------------- MEMBER OPERATIONS (Jun’s part) --------------------
-
     public String registerMember(String name) {
-        // TODO (Jun): call library.registerMember(name) and return success/failure message
-        return "Feature not implemented yet.";
+        boolean ok = library.registerMember(name);
+        return ok ? "Member registered: " + name
+                  : "Member registration failed (duplicate or invalid name).";
     }
 
     public String removeMember(String name) {
-        // TODO (Jun): call library.removeMember(name) and return success/failure message
-        return "Feature not implemented yet.";
+        boolean ok = library.removeMember(name);
+        return ok ? "Member removed: " + name
+                  : "Member removal failed (not found or has borrowed books).";
     }
 
     public void listMembers() {
-        // TODO (Jun): get members info from library.listMembersInfo() and print it
+        System.out.println(library.listMembersInfo());
     }
 }

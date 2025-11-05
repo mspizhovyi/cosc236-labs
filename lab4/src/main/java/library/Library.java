@@ -47,7 +47,11 @@ public class Library {
         Book book = bookOpt.get();
         if (!book.isAvailable()) return false;
 
-        // TODO (Jun): after Member logic is done, find the member and call member.borrowBook(book)
+        Optional<Member> memberOpt = findMember(memberName);
+        if (memberOpt.isEmpty()) return false;
+
+        Member member = memberOpt.get();
+        member.borrowBook(book);
         book.setAvailable(false);
         return true;
     }
@@ -59,30 +63,60 @@ public class Library {
         Book book = bookOpt.get();
         if (book.isAvailable()) return false;
 
-        // TODO (Jun): after Member logic is done, find the member and call member.returnBook(book)
+        Optional<Member> memberOpt = findMember(memberName);
+        if (memberOpt.isEmpty()) return false;
+
+        Member member = memberOpt.get()
+        member.returnBook(book);
         book.setAvailable(true);
         return true;
     }
 
-    // -------------------- MEMBER MANAGEMENT (Jun’s part) --------------------
-
     public boolean registerMember(String name) {
-        // TODO (Jun): create new Member and add to members list if not already exists
-        return false;
+        if (name == null || name.isBlank()) return false;
+        if (findMember(name).isPresent()) return false;
+            members.add(new Member(name.trim()));
+        return true;
     }
 
     public boolean removeMember(String name) {
-        // TODO (Jun): find Member by name and remove from members list
-        return false;
+        Optional<Member> mOpt = findMember(name);
+        if (mOpt.isEmpty()) return false;
+
+        Member m = mOpt.get();
+        if (!m.getBorrowedBooks().isEmpty()) {
+            return false;
+        }
+        members.remove(m);
+        return true;
     }
 
     public Optional<Member> findMember(String name) {
-        // TODO (Jun): search members list for a matching name (ignore case)
-        return Optional.empty();
+        if (name == null) return Optional.empty();
+        String target = name.trim();
+        return members.stream()
+                .filter(m -> m.getName().equalsIgnoreCase(target))
+                .findFirst();
     }
 
     public String listMembersInfo() {
-        // TODO (Jun): return a string with all members and their borrowed books
-        return "No members found.";
+        if (members.isEmpty())
+            return "No members found.";
+        StringBuilder sb = new StringBuilder("Members:\n");
+        for (Member m : members) {
+            sb.append("- ").append(m.getName())
+              .append(" | borrowed: ").append(m.getBorrowedBooks().size());
+            if (!m.getBorrowedBooks().isEmpty()) {
+                sb.append(" [");
+                for (int i = 0; i < m.getBorrowedBooks().size(); i++) {
+                    Book b = m.getBorrowedBooks().get(i);
+                    sb.append(b.getTitle()).append(" by ").append(b.getAuthor());
+                    if (i < m.getBorrowedBooks().size() - 1) sb.append("; ");
+                }
+                sb.append("]");
+            }
+            sb.append("\n");
+        }
+        return sb.toString()
     }
 }
