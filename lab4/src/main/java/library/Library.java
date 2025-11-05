@@ -47,7 +47,7 @@ public class Library {
         Book book = bookOpt.get();
         if (!book.isAvailable()) return false;
 
-        Optional<Member> memberOpt = findMember(memberName);
+        Optional<Member> memberOpt = findMember(memberId);
         if (memberOpt.isEmpty()) return false;
 
         Member member = memberOpt.get();
@@ -63,10 +63,10 @@ public class Library {
         Book book = bookOpt.get();
         if (book.isAvailable()) return false;
 
-        Optional<Member> memberOpt = findMember(memberName);
+        Optional<Member> memberOpt = findMember(memberId);
         if (memberOpt.isEmpty()) return false;
 
-        Member member = memberOpt.get()
+        Member member = memberOpt.get();
         member.returnBook(book);
         book.setAvailable(true);
         return true;
@@ -117,6 +117,6 @@ public class Library {
             }
             sb.append("\n");
         }
-        return sb.toString()
+        return sb.toString();
     }
 }

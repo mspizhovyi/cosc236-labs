@@ -42,7 +42,7 @@ public class LibrarianControllerTest {
     @Test
     void shouldBorrowBookWhenAvailable() {
         controller.collectBook("The Pragmatic Programmer", "Andy Hunt");
-        // Member logic not implemented yet, but we can test book-only behavior 🤔
+        controller.registerMember("DummyMember");
         String result = controller.borrowBook("The Pragmatic Programmer", "Andy Hunt", "DummyMember");
         assertTrue(result.contains("Book borrowed successfully"));
     }
@@ -72,12 +72,12 @@ public class LibrarianControllerTest {
     // -------------------------------------------------------------
     // 🚧 FUTURE TESTS (commented out until Member logic is added)
     // -------------------------------------------------------------
-    /*
     @Test
     void shouldBorrowBookWithRealMemberOnceImplemented() {
         controller.collectBook("Clean Coder", "Robert Martin");
         controller.registerMember("Alice");
-        String result = controller.borrowBook("Clean Coder", "Robert Martin", "Alice");
+        String result = controller.borrowBook(
+            "Clean Coder", "Robert Martin", "Alice");
         assertTrue(result.contains("Book borrowed successfully"));
     }
 
@@ -86,8 +86,8 @@ public class LibrarianControllerTest {
         controller.collectBook("Domain-Driven Design", "Eric Evans");
         controller.registerMember("Bob");
         controller.borrowBook("Domain-Driven Design", "Eric Evans", "Bob");
-        String result = controller.returnBook("Domain-Driven Design", "Eric Evans", "Bob");
+        String result = controller.returnBook(
+            "Domain-Driven Design", "Eric Evans", "Bob");
         assertTrue(result.contains("Book returned successfully"));
     }
-    */
 }

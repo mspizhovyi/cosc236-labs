@@ -17,7 +17,7 @@ public class Member {
 
     public void borrowBook(Book book) {
         if(book == null) 
-            return System.out.println(book.getName() + " does not exist in the library.");
+            System.out.println(book.getTitle() + " does not exist in the library.");
         if(!borrowedBooks.contains(book))
             borrowedBooks.add(book);
 
@@ -25,9 +25,9 @@ public class Member {
 
     public void returnBook(Book book) {
         if(book == null)
-            return System.out.println(book.getName() + " does not exist in the library.");
+            System.out.println(book.getTitle() + " does not exist in the library.");
         if(borrowedBooks.contains(book))
-            borrowedBooks.remove(book)
+            borrowedBooks.remove(book);
     }
 
     public List<Book> getBorrowedBooks() {
